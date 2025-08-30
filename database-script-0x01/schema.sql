@@ -84,6 +84,7 @@ CREATE TABLE "User" (
   PRIMARY KEY (user_id)
 );
 
+-- Constraints
 ALTER TABLE Property
 ADD CONSTRAINT FK_User_TO_Property FOREIGN KEY (host_id) REFERENCES "User" (user_id);
 
@@ -110,3 +111,10 @@ ADD CONSTRAINT FK_User_TO_Message1 FOREIGN KEY (recipient_id) REFERENCES "User" 
 
 ALTER TABLE Property
 ADD CONSTRAINT FK_Location_TO_Property FOREIGN KEY (location_id) REFERENCES Location (location_id);
+
+-- Indexes
+CREATE INDEX user_email_idx ON "User" (email);
+
+CREATE INDEX booking_property_id_idx ON Booking (property_id);
+
+CREATE INDEX payment_booking_id_idx ON Payment (booking_id);
